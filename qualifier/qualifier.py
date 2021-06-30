@@ -108,14 +108,21 @@ def make_table(rows: List[List[Any]], labels: Optional[List[Any]] = None, center
 def create_table_row(separator: List[str], words: List[str], max_len: List[int], padding: Optional[str] = " ", is_centered: bool = False) -> str:
 
     table_row = []
+    
+    # Make sure all of the parameters are strings and booleans
+    separator = [str(sep) for sep in separator]
+    words = [str(word) for word in words]
+    padding = str(padding)
+    is_centered = bool(is_centered)
+
 
     for index, word in enumerate(words):
     
-        table_group = str(word)
+        table_group = word
 
         if (is_centered):
 
-            if (len(str(word)) & 1 != max_len[index] & 1):
+            if (len(word) & 1 != max_len[index] & 1):
 
                 table_group += padding
 
